@@ -14,32 +14,32 @@
  * }
  */
 class Solution {
-    public void inOrder(TreeNode root, ArrayList<Integer> list){
+    public void inOrder(TreeNode root, ArrayList<Integer> list){  // This is step 1:- to sort bst
         if(root == null) return ;
 
-        inOrder(root.left, list);
+        inOrder(root.left, list);  // recursive clall inOrder()
         list.add(root.val);
         inOrder(root.right, list);
 
     }
 
     public TreeNode constructTree(ArrayList<Integer> list, int start, int end){
-        if(start > end){
+        if(start > end){ // Base condition of my recursive call when start is big than end then stoping condition
             return null;
 
         }
 
         int mid = start + (end - start)/2;
-        TreeNode newNode = new TreeNode(list.get(mid));
+        TreeNode newNode = new TreeNode(list.get(mid)); // create new node name= newNode
 
-        newNode.left = constructTree(list, start, mid-1);
+        newNode.left = constructTree(list, start, mid-1); // recursively callying constructTre();
         newNode.right = constructTree(list, mid+1, end);
         return newNode; 
     }
     public TreeNode balanceBST(TreeNode root) {
-        ArrayList<Integer> list = new ArrayList<>();
+        ArrayList<Integer> list = new ArrayList<>(); // creating new arraylist to store node
 
-        inOrder(root, list);
+        inOrder(root, list); // calling inOrder function
 
         return constructTree(list, 0, list.size()-1); // start=0, end = list.size()-1;
     }
