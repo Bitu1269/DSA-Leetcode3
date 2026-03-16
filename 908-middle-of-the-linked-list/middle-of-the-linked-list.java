@@ -9,7 +9,7 @@
  * }
  */
 class Solution {
-    public static int Size(ListNode head){
+    public static int Size(ListNode head){ // return mide size of list
         int size = 0;
         while(head != null){
             size++;
@@ -19,8 +19,10 @@ class Solution {
     }
     public ListNode middleNode(ListNode head) {
         if(head == null) return null;
+
         int count = Size(head);
         ListNode temp = head;
+
         for(int i=0; i<count; i++){
             temp = temp.next;
         }
